@@ -1,0 +1,1 @@
+<h1>Olá, esta é uma view Blade!</h1>
