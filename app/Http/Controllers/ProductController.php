@@ -1,8 +1,10 @@
+<?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-<?php
+
 class ProductController extends Controller
 {
     public function index()
@@ -31,17 +33,4 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Produto cadastrado com sucesso!');
     }
 
-}
-class ProductController extends Controller
-{
-    public function index()
-    {
-        $products = Product::all();
-        return view('products.index', compact('products'));
-    }
-
-    public function create()
-    {
-        return view('products.create');
-    }
 }
