@@ -5,6 +5,9 @@ use App\Http\Controllers\HelloController;
 use App\Http\Controllers\ProductController;
 
 
+Route::get('/', function () {
+	return 'Laravel está funcionando!';
+});
 
 Route::get('/teste', [HelloController::class, 'index']);
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
