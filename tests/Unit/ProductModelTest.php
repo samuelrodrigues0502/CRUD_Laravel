@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use App\Models\Product;
 use PHPUnit\Framework\TestCase;
 
-class ExampleTest extends TestCase
+class ProductModelTest extends TestCase
 {
     public function test_product_fillable_fields(): void
     {
