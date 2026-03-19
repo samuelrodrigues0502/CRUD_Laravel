@@ -22,12 +22,17 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                @if(session('success'))
+                                    <div class="alert alert-success">{{ session('success') }}</div>
+                                @endif
+
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
                                             <th>Nome</th>
                                             <th>Preço</th>
+                                            <th style="width: 200px;">Ações</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -36,10 +41,19 @@
                                                 <td>{{ $product->id }}</td>
                                                 <td>{{ $product->name }}</td>
                                                 <td>R$ {{ number_format($product->price, 2, ',', '.') }}</td>
+                                                <td>
+                                                    <a href="{{ route('products.edit', $product) }}" class="btn btn-sm btn-warning">Editar</a>
+                                                    <form action="{{ route('products.destroy', $product) }}" method="POST" class="d-inline"
+                                                        onsubmit="return confirm('Deseja realmente excluir este produto?');">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="3">Nenhum produto cadastrado.</td>
+                                                <td colspan="4">Nenhum produto cadastrado.</td>
                                             </tr>
                                         @endforelse
                                     </tbody>
